@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dharmik",
+      "email": "dharmik@gmail.com",
+      "city": "Surat"
+    },
+    {
+      "id": 2,
+      "name": "Dhruv",
+      "email": "dharmik@gmail.com",
+      "city": "Surat"
+    },
+    {
+      "id": 3,
+      "name": "Raj",
+      "email": "dharmik@gmail.com",
+      "city": "Surat"
+    },
+    {
+      "id": 4,
+      "name": "Dharmik",
+      "email": "dharmik123@gmail.com",
+      "city": "Vapi"
+    }
+  ]
+}
