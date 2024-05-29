@@ -7,6 +7,7 @@ function Home(){
 
     const [todo, setTodo] = useState("");
     const [tododata, setTodoData] = useState([]);
+    const [edit, setEdit] = useState(null);
 
     //create
     const hendelTodo = (e) => {
@@ -57,6 +58,30 @@ function Home(){
         })
     }
 
+    // update
+
+    const handelEdit = (id) => {
+        const isEdited = tododata.find((v) => v.id === id);
+        setEdit(isEdited);
+    }
+    console.log(edit);
+
+    const handeleditSave = (e) => {
+        e.preventDefault();
+
+        axios.patch(`http://localhost:8000/todos/${edit.id}`, {
+            todo: edit.todo
+        })
+        .then((res) => {
+            console.log(res);
+            console.log("Data Updated Successfully");
+            toast.success("Data Updated Successfully");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
     return <div>
 
         <h1>Todo List</h1>
@@ -75,6 +100,16 @@ function Home(){
                     </div>
                 })
             }
+            <div>
+                {
+                    edit && <div>
+                        <form>
+                            <input type="text" value={edit.todo} onChange={(e) => setEdit({ ...edit, todo: e.target.value })} />
+                            <button onClick={handeleditSave}>Submit</button>
+                        </form>
+                    </div>
+                }
+            </div>
         </div>
 
         <ToastContainer />
